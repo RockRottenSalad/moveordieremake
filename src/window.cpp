@@ -57,6 +57,25 @@ void windowCreator::render(object& objectArg)
     SDL_RenderCopy(renderer, objectArg.getTexture(), &source, &dest);
 }
 
+
+void windowCreator::render(textRender& textArg)
+{
+    SDL_Rect source;
+    source.x = textArg.getCurrentFrame().x;
+    source.y = textArg.getCurrentFrame().y;
+    source.w = textArg.getCurrentFrame().w;
+    source.h = textArg.getCurrentFrame().h;
+
+    SDL_Rect dest;
+    dest.x = textArg.getPos().x;
+    dest.y = textArg.getPos().y;
+    dest.w = textArg.getCurrentFrame().w;
+    dest.h = textArg.getCurrentFrame().h;
+
+    // ADD ENTITY
+    SDL_RenderCopy(renderer, textArg.getTexture(), &source, &dest);
+}
+
 void windowCreator::display()
 {
    SDL_RenderPresent(renderer); 

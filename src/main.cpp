@@ -5,6 +5,7 @@
 
 #include "window.hpp"
 #include "controls.hpp"
+#include "gameloophandler.hpp"
 
 
 int main(int argc, char ** argv)
@@ -49,38 +50,18 @@ int main(int argc, char ** argv)
                 break;
         }
 
-        switch(plrControls.getDirection()){
-            case 1:
-                temp = plr.getPos();
-                temp.x -= plrControls.getSpeed(); 
-                plr.changePos(temp);
-                break;
-            case 2: 
-                temp = plr.getPos();
-                temp.x += plrControls.getSpeed(); 
-                plr.changePos(temp);
-                break;
-            case 3:
-                temp = plr.getPos();
-                temp.y -= plrControls.getSpeed(); 
-                plr.changePos(temp);
-                break;
-            case 4:
-                temp = plr.getPos();
-                temp.y += plrControls.getSpeed(); 
-                plr.changePos(temp);
-                break;
+        movePlr(plrControls, plr, temp);
+        eaten = checkCollision(plr, food); 
 
-        }
-        if(eaten == true)
-        {
+        if(eaten == true) {
             eaten = false;
             food.changePos(food.randomCords());
+            plrControls.changeSpeed(plrControls.getSpeed() + 1);
         }
 
         window.clear();
-        window.render(plr);
         window.render(food);
+        window.render(plr);
         window.display();
     }
 

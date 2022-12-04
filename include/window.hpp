@@ -4,6 +4,7 @@
 #include<SDL2/SDL_image.h>
 
 #include "object.hpp"
+#include "textrender.hpp"
 
 class windowCreator
 {
@@ -16,6 +17,7 @@ class windowCreator
         void cleanExit(); // kill window
         void clear(); // clear previously rendered stuff
         void render(object& objectArg); // render something
+        void renderText(textRender& textArg);
         void display(); // display rendered texture
 };
 

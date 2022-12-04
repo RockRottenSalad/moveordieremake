@@ -2,7 +2,7 @@
 #include "controls.hpp"
 
 controls::controls(int directionArg, int speedArg)
-    :direction(directionArg), speed(speedArg)
+    :direction(directionArg), speed(speedArg), score(0)
 {}
 
 void controls::changeDirection(int directionArg)

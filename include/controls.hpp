@@ -7,6 +7,7 @@ class controls
     private:
         int direction;
         int speed;
+        int score;
     public:
         controls(int directionArg, int speedArg);
         void changeDirection(int directionArg);
