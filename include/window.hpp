@@ -2,6 +2,7 @@
 
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
+#include<SDL2/SDL_ttf.h>
 
 #include "object.hpp"
 #include "textrender.hpp"
@@ -19,5 +20,6 @@ class windowCreator
         void render(object& objectArg); // render something
         void renderText(textRender& textArg);
         void display(); // display rendered texture
+        SDL_Renderer* getRenderer();
 };
 

@@ -24,13 +24,22 @@ void movePlr(controls& plrControls, object& plr, Vector2D temp)
                 temp.y += plrControls.getSpeed(); 
                 plr.changePos(temp);
                 break;
+            default:
+                break;
         }
 }
 
 
 bool checkCollision(object& plr, object& food)
 {
-    if(abs(plr.getPos().x - food.getPos().x) <= 32 && abs(plr.getPos().y - food.getPos().y) <= 32)
+    if(abs(plr.getPos().x - food.getPos().x) <= 55 && abs(plr.getPos().y - food.getPos().y) <= 55)
+        return true;
+    return false;
+}
+
+bool checkOutOfBounds(object& plr)
+{
+    if(plr.getPos().x > 980 && plr.getPos().x < 0 && plr.getPos().y > 980 && plr.getPos().y < 0)
         return true;
     return false;
 }

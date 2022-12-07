@@ -8,4 +8,5 @@
 
 void movePlr(controls& plrControls, object& plr, Vector2D temp);
 bool checkCollision(object& plr, object& food);
+bool checkOutOfBounds(object& plr);
 

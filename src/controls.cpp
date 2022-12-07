@@ -25,3 +25,17 @@ int controls::getSpeed()
     return speed;
 }
 
+void controls::incScore()
+{
+    score += 1;
+}
+
+void controls::resetScore()
+{
+    score = 0;
+}
+
+int controls::getScore()
+{
+    return score;
+}

@@ -5,6 +5,7 @@
 
 #include "window.hpp"
 #include "object.hpp"
+#include "textrender.hpp"
 
 windowCreator::windowCreator(const char* winTitle, int w, int h)
     :window(NULL), renderer(NULL)
@@ -15,6 +16,7 @@ windowCreator::windowCreator(const char* winTitle, int w, int h)
        std::cout << "well, shit: " << SDL_GetError() << std::endl;
 
    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+   TTF_Init();
 }
 
 SDL_Texture* windowCreator::loadTexture(const char* filePath)
@@ -58,25 +60,21 @@ void windowCreator::render(object& objectArg)
 }
 
 
-void windowCreator::render(textRender& textArg)
+void windowCreator::renderText(textRender& textArg)
 {
-    SDL_Rect source;
-    source.x = textArg.getCurrentFrame().x;
-    source.y = textArg.getCurrentFrame().y;
-    source.w = textArg.getCurrentFrame().w;
-    source.h = textArg.getCurrentFrame().h;
-
-    SDL_Rect dest;
-    dest.x = textArg.getPos().x;
-    dest.y = textArg.getPos().y;
-    dest.w = textArg.getCurrentFrame().w;
-    dest.h = textArg.getCurrentFrame().h;
+    SDL_Rect dest = textArg.getMsgRect();
 
     // ADD ENTITY
-    SDL_RenderCopy(renderer, textArg.getTexture(), &source, &dest);
+    SDL_RenderCopy(renderer, textArg.getTexture(), NULL, &dest);
 }
+
 
 void windowCreator::display()
 {
    SDL_RenderPresent(renderer); 
+}
+
+SDL_Renderer* windowCreator::getRenderer()
+{
+    return renderer;
 }

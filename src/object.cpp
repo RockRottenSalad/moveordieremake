@@ -31,7 +31,8 @@ SDL_Rect object::getCurrentFrame()
     return curFrame;
 }
 
+
 Vector2D object::randomCords()
 {
-    return Vector2D((rand() % 980), (rand () % 980));
+    return Vector2D((rand() % 950), (rand () % 950));
 }

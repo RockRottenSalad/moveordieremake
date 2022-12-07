@@ -14,5 +14,8 @@ class controls
         int getDirection();
         void changeSpeed(int speedArg);
         int getSpeed();
+        void incScore();
+        void resetScore();
+        int getScore();
 };
 
