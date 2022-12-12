@@ -39,7 +39,7 @@ bool checkCollision(object& plr, object& food)
 
 bool checkOutOfBounds(object& plr)
 {
-    if(plr.getPos().x > 980 && plr.getPos().x < 0 && plr.getPos().y > 980 && plr.getPos().y < 0)
+    if(plr.getPos().x > 980 || plr.getPos().x < -32 || plr.getPos().y > 980 || plr.getPos().y < -32)
         return true;
     return false;
 }

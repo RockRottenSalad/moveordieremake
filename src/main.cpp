@@ -22,8 +22,10 @@ int main(int argc, char ** argv)
     SDL_Color white = {255, 255, 255, 0};
     SDL_Rect scoreRect;
     scoreRect.x = scoreRect.y = 10;
-    scoreRect.w = 30;
+    scoreRect.w = 40;
     scoreRect.h = 50;
+    char *tempstr;
+    tempstr = new char;
 
     std::srand(std::time(nullptr));
     object plr = object(Vector2D(458,458), playerTexture);
@@ -70,10 +72,19 @@ int main(int argc, char ** argv)
             food.changePos(food.randomCords());
             plrControls.changeSpeed(plrControls.getSpeed() + 1);
             plrControls.incScore();
-            char *tempstr;
             sprintf(tempstr, "%d", plrControls.getScore());
             score.updateSurface(tempstr, window.getRenderer());
-           // free(tempstr);
+            memset(tempstr, 0, sizeof(tempstr));
+        }
+
+        if(checkOutOfBounds(plr)) {
+            plrControls.changeDirection(0);
+            plr.changePos(Vector2D(458,458));
+            plrControls.resetScore();
+            plrControls.changeSpeed(5);
+            sprintf(tempstr, "%d", plrControls.getScore());
+            score.updateSurface(tempstr, window.getRenderer());
+            memset(tempstr, 0, sizeof(tempstr));
         }
 
         window.clear();
